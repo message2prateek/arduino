@@ -18,3 +18,9 @@ Click on the link below to see the sketch in action through AutoDesk Circuits si
 [Play the game](https://circuits.io/circuits/5296490-dice-game/embed#breadboard)
 
 Hit "Start Simulation" button and then click on the PushButton to throw the dice.
+
+## Lab view
+![labView](resources/labView.png)
+
+## Schematics
+![schematics](resources/schematicsView.png)
