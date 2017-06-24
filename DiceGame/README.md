@@ -13,6 +13,8 @@ Pressing the pushbutton is analogous to throwing the dice.
 Anticipation is build by flashing all the 6 LEDs in a sequential pattern and then result of the throw is revealed by lighting up LEDs ,in sequence, equal to the generated random number.
 
 ## Try it
-Hit "Start Simulation" button and then click on the PushButton to throw the dice.
+Click on the link below to see the sketch in action through AutoDesk Circuits simulation.
 
-<iframe frameborder='0' height='448' marginheight='0' marginwidth='0' scrolling='no' src='https://circuits.io/circuits/5296490-dice-game/embed#breadboard' width='650'></iframe>
+[Play the game](https://circuits.io/circuits/5296490-dice-game/embed#breadboard)
+
+Hit "Start Simulation" button and then click on the PushButton to throw the dice.
