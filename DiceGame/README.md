@@ -20,7 +20,7 @@ Click on the link below to see the sketch in action through AutoDesk Circuits si
 Hit "Start Simulation" button and then click on the PushButton to throw the dice.
 
 ## Lab view
-![labView](labView.PNG)
+![labView](/src/resources/labView.PNG)
 
 ## Schematics
-![schematics](schematicsView.PNG)
+![schematics](/src/resources/schematicsView.PNG)
