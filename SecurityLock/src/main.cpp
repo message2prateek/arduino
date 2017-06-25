@@ -23,11 +23,11 @@ char key;
 // Flag to indicate the char position in the password array
 int position =0;
 //Flag to indicate if the user entered key combination matches the correct password
-bool secretKeyMatch = true;
+bool doesKeyCombinationMatchPassword = true;
 
 //   This method flashes the green led if the user entered passcode is correct to indicate success.
-void openLock(bool secretKeyMatch){
-        if(secretKeyMatch && position != 0) {
+void openLock(bool doesKeyCombinationMatchPassword){
+        if(doesKeyCombinationMatchPassword && position != 0) {
                 digitalWrite(RED_LED, LOW);
                 digitalWrite(GREEN_LED, HIGH);
                 delay(2000);
@@ -50,10 +50,10 @@ void setup(){
         digitalWrite(RED_LED, HIGH);
 }
 
-// Resets the position and secretKeyMatch to the default values
+// Resets the position and doesKeyCombinationMatchPassword to the default values
 void reset(){
         position =0;
-        secretKeyMatch = true;
+        doesKeyCombinationMatchPassword = true;
 }
 
 // checks if the individual key enterd by the user matches char of the correct password at the given position
@@ -73,12 +73,12 @@ void loop(){
                         reset();
                         break;
                 case '#':
-                        openLock(secretKeyMatch);
+                        openLock(doesKeyCombinationMatchPassword);
                         reset();
                         break;
                 default:
                         if (!isEnteredKeyCorrect(key,position)) {
-                                secretKeyMatch = false;
+                                doesKeyCombinationMatchPassword = false;
                         }
                         position++;
                 }
