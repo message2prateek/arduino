@@ -24,3 +24,9 @@ Hit "Start Simulation" button and then click on the PushButton to throw the dice
 
 ## Schematics
 ![schematics](src/resources/schematicsView.PNG)
+
+## Material requirements
+- Arduino UNO or similar
+- 6 LEDs(preferably same color)
+- 6 270 ohms resistors
+- 1 Pushbutton
