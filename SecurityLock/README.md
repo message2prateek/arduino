@@ -3,6 +3,8 @@
 ## Description
 This project mimics a security lock with a numbered keypad. The status of the lock is indicated by different LEDs.
 
+This sketch uses this Keypad library http://playground.arduino.cc/Code/Keypad
+
 ## Gameplay
 User is required to enter key combination to open a fictitious lock. The status of lock is indicated by different color LEDs as below.
 
