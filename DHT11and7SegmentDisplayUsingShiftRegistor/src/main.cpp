@@ -125,33 +125,42 @@ void printDataOnDisplay(char* charData){
         }
 }
 
-void loop() {
+void displayErrorMessage(){
+  char error[4] = {'E','r','r','0'};
+  printDataOnDisplay(error);
+}
 
-        sensors_event_t event;
-        char data[4];
-
-        // Get temperature event
+void displayTemprature(sensors_event_t event, char* data){
+        // Get temperature data
         dht.temperature().getEvent(&event);
         if (isnan(event.temperature)) {
-                strcpy(data,"Err0");
-                printDataOnDisplay(data);
+                displayErrorMessage();
         }
         else {
                 itoa(event.temperature, dhtSensorReading, 10);
                 strcpy(data,strcat(dhtSensorReading, "dC"));
                 printDataOnDisplay(data);
         }
+}
 
-        // Get humidity event
+void displayHumidity(sensors_event_t event, char* data){
+        // Get humidity data
         dht.humidity().getEvent(&event);
         if(isnan(event.relative_humidity)) {
-                strcpy(data,"Err0");
-                printDataOnDisplay(data);
+                  displayErrorMessage();
         }
         else {
                 itoa(event.relative_humidity, dhtSensorReading, 10);
                 strcpy(data,strcat(dhtSensorReading, "PC"));
                 printDataOnDisplay(data);
         }
+}
 
+void loop() {
+
+        sensors_event_t event;
+        char data[4];
+
+        displayTemprature(event, data);
+        displayHumidity(event, data);
 }
