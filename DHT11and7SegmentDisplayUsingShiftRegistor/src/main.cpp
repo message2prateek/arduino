@@ -114,9 +114,6 @@ void printDataOnDisplay(char* charData){
         uint32_t displayUntilMillis = millis() + dataDisplayDuration;
         for(uint32_t j = millis(); j < displayUntilMillis; j=millis()) {
                 for(int i = 0; i<= 3; i++) {
-                        for(int k =0; k<=3; k++) {
-                                digitalWrite(digits[k], LOW);
-                        }
                         digitalWrite(latchPin, LOW);
                         shiftOut(dataPin, clockPin, LSBFIRST, getCharacterRepresentationForDisplay(charData[i]));
                         //We need to first shirt the data and then open up the display digit for output to avoid ghosting
