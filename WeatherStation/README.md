@@ -120,10 +120,30 @@ Problem
 Solution
   : Shift registers
 
-SN74HC595, used in this example is a Serial-In Parallel-Out(SIPO) shift register. This means it accepts data in a serial format and outputs the data into parallel output. This chip is generally used as output expander for Arduino. SN74HC595 produces output on 8 pins by accepting input throught 1 data pin. This means that instead of using 8 GPIO pins on an Arduino we only need to use 1 GPIO pin, which provides input data to the shift register. The shift register in turn ouputs the data to it's 8 output pins in parallel as shown below.
+SN74HC595, used in this example is a Serial-In Parallel-Out(SIPO) shift register. This means it accepts data in a serial format(1 Bit at a time) and outputs a Byte(8 bits) of data simultaniously onto it's output pins, which can be pictured as a parallel output.
 
 ![](resources/SN74HC595.png)
-Here we can see the a serial binary data i.e. "10010110" is being fed to the data pin of the Shift Register and it outputs each bit of the binary number on it's output pins simultaniously. Hence the name, Serial In Parallel Out (SIPO).
+In the diagram above we can see the a serial binary data i.e. "10010110" is being fed to the data pin of the Shift Register and it outputs each bit of the binary number on it's output pins simultaniously.
+
+SN74HC595 is generally used as output expander for Arduino since the chip produces output on 8 pins by accepting input throught 1 data pin. This means that instead of using 8 GPIO pins on an Arduino we only need to use 1 GPIO pin, which provides input data to the shift register.
 
 #### How Shift Regiters work
-![](resources/ShiftRegister.gif)
+##### PinOut
+SN74HC595 Shift Register IC contains 16 pins as below
+![](resources/SN74HC595-pinout.png)
+Vcc
+ : Input voltage
+
+Q~a~ - Q~h~
+ : Output pins
+
+SER
+ : Data pin.
+
+
+
+![](resources/SN74HC595.gif)
+
+> :bulb: This is over simplified explanation for simplisity sake.
+
+Internally shift registers comprise of
