@@ -5,6 +5,7 @@
 DHT11 is a temperatue and humidity sensor. We are going to display the temperatue and humidity data onto a 4 digit 7 segment display.
 
 ## Parts needed
+
 1. Arduino Uno/Nano
 1. DHT11 sensor
 1. 4 digit 7 segment display (common annode)
@@ -14,13 +15,15 @@ DHT11 is a temperatue and humidity sensor. We are going to display the temperatu
 1. 8 220 ohm resitors
 
 ## Schematic
-![](resources/Weather-Station.png)
+
+![Weather station](resources/Weather-Station.png)
 
 ## Parts Resources
 
 ### DHT11
+
 DHT11 sensor is breadboard friendly and is smiple to use. Only 3 of it's 4 pins are used.
-<img src="resources/dht11.png" width="30%" />
+<img src="resources/dht11.png" width="30%" \>
 
 :pencil: DHT11 requies a 10k ohm pull-up resistor on the data pin.
 
@@ -29,6 +32,7 @@ DHT11 sensor is breadboard friendly and is smiple to use. Only 3 of it's 4 pins 
 [More details from Adafruit's learning site](https://cdn-learn.adafruit.com/downloads/pdf/dht.pdf)
 
 ### 4 Digit 7 segment display
+
 For this project I am using a 4 Digit 7 Segment display of type __*common annode*__.
 
 These dipslays are simple devices where each digit is made up of 7 LEDs put together, named A-G as in the image below. There is also a 8th circular LED present for each digit for displaying decimal point and is called *DP*.
@@ -38,18 +42,21 @@ The LEDs of the display are called a "Segment" because each LED represents a seg
 
 Below image shows LEDs combination to be swtiched ON to display numbers 0-9.
 
-![](resources/segment3.gif)
-<br>
+![Displaying characters on a 7 segment display](resources/segment3.gif)
+<br />
 
 #### Common annode vs Common cathode displays
+
 What makes these displays a little tricky to use is how the LEDs are connected together within each digit(of the display) and also across to other digits.
 
 Based on how the LEDs are connected, these display come in two variety -
+
 1. common annode (if annodes of each LED within a digit are connected together)
+
 1. common cathode (if cathodes of each LED within a digit are connected together)
 
 The image below shows how LEDs of a common annode display are connected and the pin numbers which expose them.
-![](resources/diagramDisplayConnections.png)
+![Internal connections for 7 segment display](resources/diagramDisplayConnections.png)
 
 Here we can see that for each individual digit, annodes of all the 8 LEDs (A~G + DP) are connected together. Annodes of DIG. 1 are connected together and exposed as pin 12 of the display, annodes of DIG.2 are connected together and exposed as pin 11 and so on...
 
@@ -62,29 +69,34 @@ Now to the above configuration if we connect the pin 9 to the positve terminal a
 [Refer Datasheet](http://docs-europe.electrocomponents.com/webdocs/12fb/0900766b812fb993.pdf)
 
 #### Displaying Data
+
 ##### Displaying number 1
+
 Armed with the information so far, suppose we want to display number 1. For displaying number 1 we need to light up LEDs B and C on DIG. 4. As per the image above DIG 4. is connected to pin 6 of the display, so we need to connect ping 6 to the positive terminal. Also, LED B and C are exposed through pins 7 and 4, so we need to connected both pins 7 and 4 to the negative terminal. Now we should see "1" displayed.
 
-![](resources/Number-1.png)
+![Displaying number 1](resources/Number-1.png)
 
 ##### Displaying number 11
+
 To display number 11 we need light up LEDs B and C on both DIG. 1 and DIG. 2. We can acheive this by connecting pin 8 to the positve terminal as well in the schematic we used for displaying number 1.
-![](resources/Number-11.png)
+
+![Displaying number 11](resources/Number-11.png)
 
 ##### Displaying different numbers on different digits
+
 Suppose we need to display number 17. :warning: Now we have a problem.
 
 Due to how the LEDs in the display are connected, we are able to only display the same number at the same time on more than 1 digits. We need a mechanism to be able to control digits in isolation.
 
 ###### Enter Multiplexing
-Multiplexing for 7 segments display means that instead of trying to display all the 4 digits together, we display only 1 digit at a time, swtiching from one digit to another so quickly that the human eye perceives that all the 4 digits are ON at the same time.
 
+Multiplexing for 7 segments display means that instead of trying to display all the 4 digits together, we display only 1 digit at a time, swtiching from one digit to another so quickly that the human eye perceives that all the 4 digits are ON at the same time.
 
 Consider the below schematic. Here we have introduced switches to the connections for DIG3(pin 8), DIG4(pin 6) as well as ping for LED segments A(pin 11), B(pin7), C(pin4). I have named the switches appropriately to identify what they are switching.
 
 We will be Multiplexing DIG3 and DIG4 for simplisity sake.
 
-![](resources/MultiplexingExample.png)
+![Multiplexing](resources/MultiplexingExample.png)
 
 We'll start with all the switches in the OFF position.
 
@@ -107,9 +119,8 @@ Summary of the steps
 |4| same as iteration 2|
 |...|
 
-> :pencil: We will be using Arduino to perform the switching for us.
-
-> Multiplexing is a technique of combining more than one input signals into a more complex signal and then deliver each signal in isolation.
+> :pencil: We will be using Arduino to perform the switching for us.<br />
+> _Multiplexing_ is a technique of combining more than one input signals into a more complex signal and then deliver each signal in isolation.
 [Read more on Multiplexing](https://en.wikipedia.org/wiki/Multiplexer)
 
 ### Shift Register
@@ -122,15 +133,17 @@ Solution
 
 SN74HC595, used in this example is a Serial-In Parallel-Out(SIPO) shift register. This means it accepts data in a serial format(1 Bit at a time) and outputs a Byte(8 bits) of data simultaniously onto it's output pins, which can be pictured as a parallel output.
 
-![](resources/SN74HC595.png)
+![Shift Register](resources/SN74HC595.png)
 In the diagram above we can see the a serial binary data i.e. "10010110" is being fed to the data pin of the Shift Register and it outputs each bit of the binary number on it's output pins simultaniously.
 
 SN74HC595 is generally used as output expander for Arduino since the chip produces output on 8 pins by accepting input throught 1 data pin. This means that instead of using 8 GPIO pins on an Arduino we only need to use 1 GPIO pin, which provides input data to the shift register.
 
 #### How Shift Regiters work
+
 ##### PinOut
+
 SN74HC595 Shift Register IC contains 16 pins as below
-![](resources/SN74HC595-pinout.png)
+![SN74HC595 pinout](resources/SN74HC595-pinout.png)
 Vcc
  : Input voltage
 
@@ -140,9 +153,7 @@ Q~a~ - Q~h~
 SER
  : Data pin.
 
-
-
-![](resources/SN74HC595.gif)
+![SN74HC595 Working](resources/SN74HC595.gif)
 
 > :bulb: This is over simplified explanation for simplisity sake.
 
