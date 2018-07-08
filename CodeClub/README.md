@@ -138,12 +138,41 @@ graph TD
     dl2 ==> dw1
 ```
 
-<!-- #
+#### Challenge : Change On/Off time
 
-- In the first line we tell Arduino the pin to which our LED is attached. 
-    - `LED` is called a variable and we can use the term `LED` to reference our physical LED from hereon.
-    - A variable is like a box where we can store important information. In this case, LED stores the pin number to which our LED is connected to i.e. pin 5.
-    - `cont` means constant. This means that LED variable can only have value 5 from hereon.
-    - `int` means integer. This indicates that LED variable can only store numeric integer values. 
-- 
- -->
+Problem: Presently the LED stays "on" and "off" for a second each. Change the program so that the LED stays on for 2 second and off for 500 milliseconds.
+
+### Refactor program
+
+**Concept:**
+
+- A variable in C language is like a box in which we can store different type of information e.g. a integer or string values etc.
+- Variables need to be declared before they could be used in the program.
+- Variables can be declared and assigned a value like so `int pin = 5;`. Here we have declared a variable called `pin` and stored and integer value value 5 in it. The `int` before "pin" tells the Arduino that the variable can only store values that are of type "integer".
+- From hereon, we can use the variable `pin` in place of 5 in the program.
+- Like a box we can replace the item(in this case value) stored in the variable. e.g. `pin =6;`. This causes the previous value 5 to be replaced by 6.
+- `const` keyword if specified before the variable name means that the variable's value cannot change. e.g. `const int pin = 5`. Trying to assign a different value to `pin` variable will result in an error.
+
+**Problem Statement:** 
+If we change the wiring of our circuit and connect the LED to say pin 6, we need to modify the program and change the pin number throughout the program. 
+
+**Solution**
+Store the LED pin into a variable like below.
+
+```C{.line-numbers}
+cont int LED = 5; //LED is connected to pin 5 of Arduino
+
+void setup()
+{
+    pinMode(LED, OUTPUT);
+}
+
+void loop()
+{
+    digitalWrite(LED, HIGH);
+    delay(1000); // Wait for 1000 millisecond(s)
+    digitalWrite(LED, LOW);
+    delay(1000); // Wait for 1000 millisecond(s)
+}
+```
+Now if the circuit changes and the LED is connected to pin 6 instead of pin 5, we need to update the code only in line number 1.
