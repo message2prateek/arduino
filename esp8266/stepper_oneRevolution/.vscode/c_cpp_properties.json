@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "D:\\Prateek\\Softwares\\arduino-1.8.5-windows\\arduino-1.8.5\\tools\\**",
+                "D:\\Prateek\\Softwares\\arduino-1.8.5-windows\\arduino-1.8.5\\hardware\\arduino\\avr\\**",
+                "${workspaceRoot}",
+                "C:\\Users\\Windium\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.2\\**",
+                "C:\\Users\\Windium\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**",
+                "D:\\Prateek\\Softwares\\arduino-1.8.5-windows\\arduino-1.8.5\\hardware\\tools\\**",
+                "D:\\Prateek\\Softwares\\arduino-1.8.5-windows\\arduino-1.8.5\\libraries\\**",
+                "C:\\Users\\Windium\\Documents\\Arduino\\hardware\\tools\\**",
+                "C:\\Users\\Windium\\Documents\\Arduino\\libraries\\**"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "forcedInclude": []
+        }
+    ],
+    "version": 4
+}
