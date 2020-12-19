@@ -1,11 +1,11 @@
 # ESP8266 Pinout
 
-![](https://github.com/r00tGER/NodeMCU-ESP12E-pinouts)
+[NodeMCU-ESP12E-pinouts](https://github.com/r00tGER/NodeMCU-ESP12E-pinouts)
 <br>
 <br>
 <br>
 
-![](https://twitter.com/ESP8266/status/715095335220092928/photo/1)
+![](https://pbs.twimg.com/media/CeyHauLWAAIiFVE?format=jpg&name=4096x4096)
 <br>
 <br>
 <br>
