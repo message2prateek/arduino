@@ -1,4 +1,4 @@
-#ESP32 Pinout
+# ESP32 Pinout & Resources
 
 ![](https://arduino-projekte.info/wp-content/uploads/2017/07/lolin32_pinout.png)
 
